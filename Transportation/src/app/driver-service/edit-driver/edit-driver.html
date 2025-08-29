@@ -1,0 +1,23 @@
+<h2>Edit Driver</h2>
+
+<form (ngSubmit)="onSubmit()" #driverForm="ngForm">
+  <label>Name:</label>
+  <input [(ngModel)]="driver.name" name="name" required /><br />
+
+  <label>License Number:</label>
+  <input [(ngModel)]="driver.licenseNumber" name="licenseNumber" required /><br />
+
+  <label>Phone Number:</label>
+  <input [(ngModel)]="driver.phoneNumber" name="phoneNumber" required /><br />
+
+  <label>Status:</label>
+  <select [(ngModel)]="driver.status" name="status">
+    <option value="ACTIVE">ACTIVE</option>
+    <option value="INACTIVE">INACTIVE</option>
+    <option value="SUSPENDED">SUSPENDED</option>
+    <option value="OFF_DUTY">OFF_DUTY</option>
+  </select><br /><br />
+
+  <button type="submit" [disabled]="!driverForm.form.valid">Update</button>
+  <button type="button" onclick="window.location.href='/drivers'">Cancel</button>
+</form>

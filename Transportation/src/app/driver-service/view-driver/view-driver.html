@@ -1,0 +1,45 @@
+<h2>All Drivers</h2>
+
+<div *ngIf="errorMessage" style="color: red;">
+  {{ errorMessage }}
+</div>
+
+<div>
+  Total drivers: {{ drivers.length }}
+</div>
+
+<div *ngIf="!drivers.length && !errorMessage && isLoading">
+  Loading drivers...
+</div>
+
+<div *ngIf="drivers.length > 0" class="driver-list">
+  <div class="driver-header">
+    <strong>ID</strong>
+    <strong>Name</strong>
+    <strong>License Number</strong>
+    <strong>Phone Number</strong>
+    <strong>Status</strong>
+    <strong>Created At</strong>
+    <strong>Updated At</strong>
+    <strong>Actions</strong>
+  </div>
+
+  <div *ngFor="let d of drivers" class="driver-row">
+    <div>{{ d.driverId }}</div>
+    <div>{{ d.name }}</div>
+    <div>{{ d.licenseNumber }}</div>
+    <div>{{ d.phoneNumber }}</div>
+    <div>{{ d.status }}</div>
+    <div>{{ d.createdAt | date:'short' }}</div>
+    <div>{{ d.updatedAt | date:'short' }}</div>
+    <div>
+      <button (click)="editDriver(d.driverId)">Edit</button>
+      <button (click)="deleteDriver(d.driverId)">Delete</button>
+    </div>
+  </div>
+</div>
+
+<br />
+
+<a href="/add-driver">Add Driver</a> |
+<a href="/">Back To Main Menu</a>
